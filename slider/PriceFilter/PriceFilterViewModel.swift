@@ -52,20 +52,6 @@ class PriceFilterViewModel: ObservableObject {
         moveRightPointer(to: valueToPointer(rightPointerCurrencyValue))
     }
     
-    private func activatePriceFilter() {
-        if !isPriceFilterActivated {
-            isPriceFilterActivated = true
-        }
-    }
-    
-    private func moveLeftPointer(to position: CGFloat) {
-        leftPointer = position
-    }
-    
-    private func moveRightPointer(to position: CGFloat) {
-        rightPointer = position
-    }
-    
     func updateLeftPointer(to position: CGFloat) {
         if position >= 0 && position <= rightPointer {
             moveLeftPointer(to: position)
@@ -80,16 +66,6 @@ class PriceFilterViewModel: ObservableObject {
             changeRightPointerCurrency(to: pointerToValue(position))
             activatePriceFilter()
         }
-    }
-    
-    private func changeLeftPointerCurrency(to value: Int) {
-        leftPointerCurrencyString = value.description
-        leftPointerCurrencyValue = value
-    }
-    
-    private func changeRightPointerCurrency(to value: Int) {
-        rightPointerCurrencyString = value.description
-        rightPointerCurrencyValue = value
     }
     
     func updateLeftPointerCurrencyValue(to value: String) {
@@ -118,6 +94,30 @@ class PriceFilterViewModel: ObservableObject {
             moveRightPointer(to: valueToPointer(numericalValue))
             activatePriceFilter()
         }
+    }
+    
+     private func changeLeftPointerCurrency(to value: Int) {
+        leftPointerCurrencyString = value.description
+        leftPointerCurrencyValue = value
+    }
+    
+    private func changeRightPointerCurrency(to value: Int) {
+        rightPointerCurrencyString = value.description
+        rightPointerCurrencyValue = value
+    }
+    
+    private func activatePriceFilter() {
+        if !isPriceFilterActivated {
+            isPriceFilterActivated = true
+        }
+    }
+    
+    private func moveLeftPointer(to position: CGFloat) {
+        leftPointer = position
+    }
+    
+    private func moveRightPointer(to position: CGFloat) {
+        rightPointer = position
     }
     
     private func valueToPointer(_ value: Int) -> CGFloat {
