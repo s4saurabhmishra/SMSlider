@@ -37,7 +37,7 @@ struct PriceFilterView: View {
                     }
                 }
                 .onRotate { _ in
-                    DispatchQueue.main.async {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                         self.viewModel.configureSlider(width: geometry.size.width)
                     }
                 }
